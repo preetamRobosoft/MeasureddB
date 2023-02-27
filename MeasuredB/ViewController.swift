@@ -10,7 +10,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
     var audioPlayer: AVAudioPlayer!
-    var audioSession: AVAudioSession!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         let audioURL = Bundle.main.url(forResource: "audio", withExtension: "mp3")!
         
         let recordingSession = AVAudioSession.sharedInstance()
-        
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
@@ -66,7 +65,6 @@ class ViewController: UIViewController {
                 audioRecorder.updateMeters()
                 let db = audioRecorder.averagePower(forChannel: 0)
                 let peakdb = audioRecorder.peakPower(forChannel: 0)
-                //                    let pTd = vDSP.powerToDecibels([db], zeroReference: -80)
                 
                 
                 print("Avg(needed)",abs(db))
@@ -75,7 +73,5 @@ class ViewController: UIViewController {
             print("ERROR: Failed to start recording process.")
         }
     }
-    
-    
 }
 
